@@ -8,13 +8,13 @@ Authors: Max Neuwinger, Sarah Verreault, Andreas Hiropedi
 
 The repository contains the following folders:
 
-- ```Analysis code``` - this contains the notebooks we used to obtain insights about aspects of the data we were working with, as well as information about model confidence scores and model selection as a motivation for our meta learner
+- ```Analysis_code``` - this contains the notebooks we used to obtain insights about aspects of the data we were working with, as well as information about model confidence scores and model selection as a motivation for our meta learner
 - ```DRfold2``` - this contains all the notebooks we used to test the DRfold2 model (https://github.com/leeyang/DRfold2)
 - ```Protenix``` - this contains all the notebooks we used to test the Protenix model (https://github.com/bytedance/Protenix)
 - ```RhoFold+``` - this contains all the notebooks we used to test the RhoFold+ model (https://github.com/ml4bio/RhoFold)
 - ```RibonanzaNet2``` - this contains all the notebooks we used to test the RibonanzaNet2 model (https://www.kaggle.com/models/shujun717/ribonanzanet2)
 - ```Ensembles``` - this contains all our code used for our experiments with different model ensemble strategies
-- ```Meta-learner``` - this contains all our code used for our experiments with the meta learner
+- ```Meta_learner``` - this contains all our code used for our experiments with the meta learner
 - ```Custom_datasets``` - this contains our custom datasets that we created following the unforeseen permanent closing of submissions from the Kaggle competition (followin the May 29 deadline)
   
 
@@ -43,7 +43,7 @@ pip install optuna
 pip install scipy
 ```
 
-5) Since all notebooks also use the USalign tool for scoring, you will additionally need to run the following command to install this locally (note: once this is installed locally, you will need to modify all the USalign directory paths in the code to point to where usalign is installed on your device, and will also need to comment out the code that copies USalign into the ```/kaggle/working``` directory):
+5) Since all notebooks also use the **USalign** tool for scoring, you will additionally need to run the following command to install this locally (note: once this is installed locally, you will need to modify all the USalign directory paths in the code to point to where usalign is installed on your device, and will also need to comment out the code that copies USalign into the ```/kaggle/working``` directory):
 
 ```sh
 conda install -c bioconda usalign
@@ -57,70 +57,109 @@ https://www.kaggle.com/competitions/stanford-rna-3d-folding/data
 
 The data on this link includes the training, validation and test datasets (although the hidden test dataset that was used for scoring for the competition leaderboard has not been made publicly available yet), as well as data for Multiple Sequence Alignment (MSA).
 
-## Analysis code
-
-**Notebooks:**
-
-- dataframe-comparing-predictions-confidences.ipynb - 
-
 ## RhoFold+
 
-**Additional dependencies:**
+### Additional dependencies
 
-**Notebooks:**
+The RibonanzaNet2 notebooks require the following additional dependencies:
 
-- rhofold+.ipynb - 
+- https://www.kaggle.com/code/shosukesuzuki/requirements
+
+### Notebooks
+
+- **rhofold+.ipynb** - code for our RhoFold+ baseline experiment
+
+### Instructions
+
+1. 
 
 ## RibonanzaNet2
 
-**Additional dependencies:**
+### Additional dependencies
 
-**Notebooks:**
+The RibonanzaNet2 notebooks require the following additional dependencies:
 
-- ribonanzanet2-ddpm-inference.ipynb - 
-- ribonanzanet2-ddpm-inference-with-msa.ipynb - 
-- ribonanzanet2-ddpm-inference-with-confidence.ipynb - 
+- https://www.kaggle.com/datasets/shujun717/ribonanzanet2-ddpm-v2
+- https://www.kaggle.com/datasets/shujun717/rnet3d-ddpm
+- https://www.kaggle.com/models/shujun717/ribonanzanet2
+
+### Notebooks
+
+- **ribonanzanet2-ddpm-inference.ipynb** - code for our RibonanzaNet2 baseline experiment
+- **ribonanzanet2-ddpm-inference-with-msa.ipynb** - code that adds MSA as an input feature to RibonanzaNet2
+- **ribonanzanet2-ddpm-inference-with-confidence.ipynb** - code that computes confidence scores for the predictions made by RibonanzaNet2 using the pLDDT (predicted Local Distance Difference Test) metric
+
+### Instructions
+
+1. 
 
 ## DRfold2
 
-**Additional dependencies:**
+### Additional dependencies
 
-**Notebooks:**
+The DRfold2 notebooks require the following additional dependencies:
 
-- drfold2-no-msa.ipynb - 
-- drfold2-add-msa.ipynb - 
-- drfold2-with-confidence.ipynb - 
+- https://www.kaggle.com/datasets/andreashiropedi/drfold2
+
+### Notebooks
+
+- **drfold2-no-msa.ipynb** - code for our DRfold2 baseline experiment
+- **drfold2-add-msa.ipynb** -  code that adds MSA as an input feature to DRfold2
+- **drfold2-with-confidence.ipynb** - code that computes confidence scores for the predictions made by DRfold2 using the pLDDT (predicted Local Distance Difference Test) metric
+
+### Instructions
+
+1. 
 
 ## Protenix
 
-**Additional dependencies:**
+### Additional dependencies
 
-**Notebooks:**
+The Protenix notebooks require the following additional dependencies:
 
-- protenix-baseline.ipynb - 
-- protenix-baseline-withmsa.ipynb - 
-- protenix-baseline-with-confidence.ipynb - 
-- protenix-finetuned-7000steps-nomsa-75crop.ipynb - TODO: FILL IN
-- protenix-finetuned-3000steps-nomsa-75crop.ipynb - TODO: FILL IN
-- protenix-finetuned-crop256-withmsa-1ksteps.ipynb - TODO: FILL IN
+- https://www.kaggle.com/datasets/maxneuwinger/protenix-public
+- https://www.kaggle.com/datasets/maxneuwinger/protenix-wheel
+
+### Notebooks
+
+- **protenix-baseline.ipynb** - code for our Protenix baseline experiment
+- **protenix-baseline-withmsa.ipynb**- code that adds MSA as an input feature to Protenix
+- **protenix-baseline-with-confidence.ipynb** - code that computes confidence scores for the predictions made by Protenix using the pLDDT (predicted Local Distance Difference Test) metric
+- **protenix-finetuned-7000steps-nomsa-75crop.ipynb** - TODO: FILL IN
+- **protenix-finetuned-3000steps-nomsa-75crop.ipynb** - TODO: FILL IN
+- **protenix-finetuned-crop256-withmsa-1ksteps.ipynb** - TODO: FILL IN
+
+### Instructions
+
+1.
+
+## Analysis code
+
+### Notebooks
+
+- **dataframe-comparing-predictions-confidences.ipynb** - this code computes the average confidence that each model has in its predictions
+
+### Instructions
+
+1. 
 
 ## Ensembles
 
-**Notebooks:**
+### Notebooks
 
-- validationpredictions.ipynb - 
-- ensembles-scoring.ipynb - 
+- **validationpredictions.ipynb** - code that generates predictions for all of our different ensemble strategies and stores them in CSV files
+- **ensembles-scoring.ipynb** - code that generates the TM-scores for the ensemble predictions for  all of our different ensemble strategies
 
-**Instructions:**
+### Instructions
 
-
+1. 
 
 ## Meta-learner
 
-**Notebooks:**
+### Notebooks
 
 - 
 
-**Instructions:**
+### Instructions
 
-
+1. 
