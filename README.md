@@ -68,7 +68,7 @@ The RhoFold+ notebooks require the following additional dependencies:
 
 ### Notebooks
 
-- **rhofold+.ipynb** - code for our RhoFold+ baseline experiment
+- ```rhofold.ipynb``` - code for our RhoFold+ baseline experiment
 
 ### Instructions
 
@@ -92,9 +92,9 @@ The RibonanzaNet2 notebooks require the following additional dependencies:
 
 ### Notebooks
 
-- **ribonanzanet2-ddpm-inference.ipynb** - code for our RibonanzaNet2 baseline experiment
-- **ribonanzanet2-ddpm-inference-with-msa.ipynb** - code that adds MSA as an input feature to RibonanzaNet2
-- **ribonanzanet2-ddpm-inference-with-confidence.ipynb** - code that computes confidence scores for the predictions made by RibonanzaNet2 using the pLDDT (predicted Local Distance Difference Test) metric
+- ```ribonanzanet2-ddpm-inference.ipynb``` - code for our RibonanzaNet2 baseline experiment
+- ```ribonanzanet2-ddpm-inference-with-msa.ipynb``` - code that adds MSA as an input feature to RibonanzaNet2
+- ```ribonanzanet2-ddpm-inference-with-confidence.ipynb``` - code that computes confidence scores for the predictions made by RibonanzaNet2 using the pLDDT (predicted Local Distance Difference Test) metric
 
 ### Instructions
 
@@ -118,9 +118,9 @@ The DRfold2 notebooks require the following additional dependencies:
 
 ### Notebooks
 
-- **drfold2-no-msa.ipynb** - code for our DRfold2 baseline experiment
-- **drfold2-add-msa.ipynb** -  code that adds MSA as an input feature to DRfold2
-- **drfold2-with-confidence.ipynb** - code that computes confidence scores for the predictions made by DRfold2 using the pLDDT (predicted Local Distance Difference Test) metric
+- ```drfold2-no-msa.ipynb``` - code for our DRfold2 baseline experiment
+- ```drfold2-add-msa.ipynb``` -  code that adds MSA as an input feature to DRfold2
+- ```drfold2-with-confidence.ipynb``` - code that computes confidence scores for the predictions made by DRfold2 using the pLDDT (predicted Local Distance Difference Test) metric
 
 ### Instructions
 
@@ -146,12 +146,12 @@ The Protenix notebooks require the following additional dependencies:
 
 ### Notebooks
 
-- **protenix-baseline.ipynb** - code for our Protenix baseline experiment
-- **protenix-baseline-withmsa.ipynb**- code that adds MSA as an input feature to Protenix
-- **protenix-baseline-with-confidence.ipynb** - code that computes confidence scores for the predictions made by Protenix using the pLDDT (predicted Local Distance Difference Test) metric
-- **protenix-finetuned-7000steps-nomsa-75crop.ipynb** - code for our Protenix finetuning experiments without MSA
-- **protenix-finetuned-3000steps-nomsa-75crop.ipynb** - code for our Protenix finetuning experiments without MSA
-- **protenix-finetuned-crop256-withmsa-1ksteps.ipynb** - code for our Protenix finetuning experiments with added MSA as an input feature
+- ```protenix-baseline.ipynb``` - code for our Protenix baseline experiment
+- ```protenix-baseline-withmsa.ipynb``` - code that adds MSA as an input feature to Protenix
+- ```protenix-baseline-with-confidence.ipynb``` - code that computes confidence scores for the predictions made by Protenix using the pLDDT (predicted Local Distance Difference Test) metric
+- ```protenix-finetuned-7000steps-nomsa-75crop.ipynb``` - code for our Protenix finetuning experiments without MSA
+- ```protenix-finetuned-3000steps-nomsa-75crop.ipynb``` - code for our Protenix finetuning experiments without MSA
+- ```protenix-finetuned-crop256-withmsa-1ksteps.ipynb``` - code for our Protenix finetuning experiments with added MSA as an input feature
 
 ### Instructions
 
@@ -167,7 +167,7 @@ The Protenix notebooks require the following additional dependencies:
 
 ### Notebooks
 
-- **dataframe-comparing-predictions-confidences.ipynb** - this code computes the average confidence that each model has in its predictions
+- ```dataframe-comparing-predictions-confidences.ipynb``` - this code computes the average confidence that each model has in its predictions
 
 ### Instructions
 
@@ -179,8 +179,8 @@ The Protenix notebooks require the following additional dependencies:
 
 ### Notebooks
 
-- **validationpredictions.ipynb** - code that generates predictions for all of our different ensemble strategies and stores them in CSV files
-- **ensembles-scoring.ipynb** - code that generates the TM-scores for the ensemble predictions for  all of our different ensemble strategies
+- ```validationpredictions.ipynb``` - code that generates predictions for all of our different ensemble strategies and stores them in CSV files
+- ```ensembles-scoring.ipynb``` - code that generates the TM-scores for the ensemble predictions for  all of our different ensemble strategies
 
 ### Instructions
 
