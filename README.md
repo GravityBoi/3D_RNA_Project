@@ -173,7 +173,15 @@ The Protenix notebooks require the following additional dependencies:
 
 1. Install all dependencies listed in the **Pre-requisites** section
 
-2. 
+2. Once all dependencies are installed, you will need to adjust the paths for the validation labels dataset to point to the ```Custom_datasets``` folder in this repository.
+
+3. Additionally, to perform the analysis in the ```dataframe-comparing-predictions-confidences.ipynb``` notebook, you will need to first generate the predictions with confidence scores for each of the three models (RibonanzaNet2, Protenix and DRfold2). Therefore, you will need to follow the setup instructions for each of the models and run the following three notebooks and save their outputs as CSV files:
+
+- ```protenix-baseline-with-confidence.ipynb```
+- ```drfold2-with-confidence.ipynb```
+- ```ribonanzanet2-ddpm-inference-with-confidence.ipynb```
+
+Note that, after running these notebooks, you will also need to adjust the paths that point to the CSV files for the predictions (e.g., ```/kaggle/input/predictions/drfold2_submission_with_confidence.csv``` will need to be modified to your local directory where this file is stored).
 
 ## Ensembles
 
@@ -186,7 +194,21 @@ The Protenix notebooks require the following additional dependencies:
 
 1. Install all dependencies listed in the **Pre-requisites** section
 
-2. 
+2. Once all dependencies are installed, you will need to adjust the paths for the validation labels dataset to point to the ```Custom_datasets``` folder in this repository.
+
+3. Additionally, to be able to successfully run both notebooks, you will need to first generate the predictions with confidence scores for each of the three models (RibonanzaNet2, Protenix and DRfold2). Therefore, you will need to follow the setup instructions for each of the models and run the following three notebooks and save their outputs as CSV files:
+
+- ```protenix-baseline-with-confidence.ipynb```
+- ```drfold2-with-confidence.ipynb```
+- ```ribonanzanet2-ddpm-inference-with-confidence.ipynb```
+
+Note that, after running these notebooks, you will also need to adjust the paths that point to the CSV files for the predictions (e.g., ```/kaggle/input/predictions/drfold2_submission_with_confidence.csv``` will need to be modified to your local directory where this file is stored).
+
+4. Once you have generated the CSV output files and adjusted the paths, first run the ```validationpredictions.ipynb``` notebook, as this contains the ensemble implementation code. 
+
+5. After running this notebook, you will need to again save the outputs as CSV files and adjust the paths in the ```ensembles-scoring.ipynb``` notebook before running the code. (e.g., ```/kaggle/input/naive-set/naive.csv``` will need to be modified to your local directory where this file is stored). 
+
+6. Following this second directory path adjustment, you can safely execute the code in the ```ensembles-scoring.ipynb``` notebook to obtain TM-score values for all the ensemble strategies.
 
 ## Meta-learner
 
