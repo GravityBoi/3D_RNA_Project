@@ -15,11 +15,41 @@ The repository contains the following folders:
 - ```RibonanzaNet2```: this contains all the notebooks we used to test the RibonanzaNet2 model (https://www.kaggle.com/models/shujun717/ribonanzanet2)
 - ```Ensembles```: this contains all our code used for our experiments with different model ensemble strategies
 - ```Meta-learner```: this contains all our code used for our experiments with the meta learner
+- ```Data``: this contains our custom datasets that we created following the unforeseen permanent closing of submissions from the Kaggle competition (followin the May 29 deadline), as well as some of our experimental results on these custom datasets
   
 
 ## Pre-requisites
 
+1) To be able to copy this code locally and execute it, you will first need to ensure that you have Python (https://www.python.org ), git (https://github.com/git-guides/install-git) and Anaconda (https://www.anaconda.com/docs/getting-started/anaconda/install) already installed, as well as a code editor (Pycharm or Visual Studio Code (VScode) will do).
 
+2) Once Python and git are set up, clone this repo using the following command:
+
+```sh
+git clone https://github.com/AndreasHiropedi/3D_RNA_Folding.git
+```
+
+3) After cloning the repository, change directory so that you are in the repository directory (```3D_RNA_Folding```).
+
+4) Once there, you will need to install the following packages, as these are commonly used across all notebooks (note: these do not include any model specific dependencies, we list more specific instructions for how to run our experiment code for each model those under the corresponding model's section):
+
+```sh
+pip install pandas
+pip install numpy
+pip install matplotlib
+pip install torch torchvision torchaudio
+pip install pyyaml
+pip install tqdm
+conda install -c bioconda usalign
+pip install optuna
+```
+
+## Data
+
+The data we used for our experiments was primarily provided by Kaggle (although we also created our custom datasets, which are stored under ```Data/Custom_datasets``) and can be access using the following link:
+
+https://www.kaggle.com/competitions/stanford-rna-3d-folding/data
+
+The data on this link includes the training, validation and test datasets (although the hidden test dataset has not been made publicly available yet), as well as data for Multiple Sequence Alignment (MSA).
 
 ## Analysis code
 
