@@ -64,6 +64,7 @@ The data on this link includes the training, validation and test datasets (altho
 The RibonanzaNet2 notebooks require the following additional dependencies:
 
 - https://www.kaggle.com/code/shosukesuzuki/requirements
+- https://www.kaggle.com/datasets/andreashiropedi/rhofold
 
 ### Notebooks
 
@@ -100,6 +101,7 @@ The RibonanzaNet2 notebooks require the following additional dependencies:
 The DRfold2 notebooks require the following additional dependencies:
 
 - https://www.kaggle.com/datasets/andreashiropedi/drfold2
+- https://www.kaggle.com/datasets/ogurtsov/biopython
 
 ### Notebooks
 
