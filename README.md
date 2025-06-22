@@ -61,7 +61,7 @@ The data on this link includes the training, validation and test datasets (altho
 
 ### Additional dependencies
 
-The RibonanzaNet2 notebooks require the following additional dependencies:
+The RhoFold+ notebooks require the following additional dependencies:
 
 - https://www.kaggle.com/code/shosukesuzuki/requirements
 - https://www.kaggle.com/datasets/andreashiropedi/rhofold
@@ -72,7 +72,13 @@ The RibonanzaNet2 notebooks require the following additional dependencies:
 
 ### Instructions
 
-1. 
+1. Install all dependencies listed in the **Pre-requisites** section
+
+2. Once those are installed, you will also need to install all the additional dependencies listed in this section using the provided links
+
+3. Once everything is installed, you will need to adjust some of the paths in the code to point to the correct directory, e.g., ```/kaggle/input/model-ckpt/RhoFold/pretrained/rhofold_pretrained_params.pt``` will need to be adjusted to the location of the ```RhoFold``` folder on your device (once that dependency is installed). Additionally, you will also need to adjust the paths for the datasets to point to the ```Custom_datasets``` folder in this repository.
+
+4. After adjusting the paths, assuming everything is correctly installed, you can simply run the notebook as a Jupyter notebook.
 
 ## RibonanzaNet2
 
@@ -92,7 +98,14 @@ The RibonanzaNet2 notebooks require the following additional dependencies:
 
 ### Instructions
 
-1. 
+
+1. Install all dependencies listed in the **Pre-requisites** section
+
+2. Once those are installed, you will also need to install all the additional dependencies listed in this section using the provided links
+
+3. Once everything is installed, you will need to adjust some of the paths in the code to point to the correct directory, e.g., ```/kaggle/input/ribonanzanet2/pytorch/alpha/1``` will need to be adjusted to the location of the ```ribonanzanet2``` folder on your device (once that dependency is installed). Additionally, you will also need to adjust the paths for the datasets to point to the ```Custom_datasets``` folder in this repository.
+
+4. After adjusting the paths, assuming everything is correctly installed, you can simply run the notebook as a Jupyter notebook.
 
 ## DRfold2
 
@@ -111,7 +124,13 @@ The DRfold2 notebooks require the following additional dependencies:
 
 ### Instructions
 
-1. 
+1. Install all dependencies listed in the **Pre-requisites** section
+
+2. Once those are installed, you will also need to install all the additional dependencies listed in this section using the provided links
+
+3. Once everything is installed, you will need to adjust some of the paths in the code to point to the correct directory, e.g., ```/kaggle/input/drfold/DRfold2/DRfold2/*``` will need to be adjusted to the location of the ```DRfold2``` folder on your device (once that dependency is installed). Additionally, you will also need to adjust the paths for the datasets to point to the ```Custom_datasets``` folder in this repository.
+
+4. After adjusting the paths, assuming everything is correctly installed, you can simply run the notebook as a Jupyter notebook.
 
 ## Protenix
 
@@ -121,19 +140,28 @@ The Protenix notebooks require the following additional dependencies:
 
 - https://www.kaggle.com/datasets/maxneuwinger/protenix-public
 - https://www.kaggle.com/datasets/maxneuwinger/protenix-wheel
+- https://www.kaggle.com/datasets/maxneuwinger/protenix-nomsa-75crop-3000steps-ema
+- https://www.kaggle.com/datasets/maxneuwinger/7ksteps-protenix-nomsa-75cropping
+- https://www.kaggle.com/datasets/maxneuwinger/1000steps-256-crop-size
 
 ### Notebooks
 
 - **protenix-baseline.ipynb** - code for our Protenix baseline experiment
 - **protenix-baseline-withmsa.ipynb**- code that adds MSA as an input feature to Protenix
 - **protenix-baseline-with-confidence.ipynb** - code that computes confidence scores for the predictions made by Protenix using the pLDDT (predicted Local Distance Difference Test) metric
-- **protenix-finetuned-7000steps-nomsa-75crop.ipynb** - TODO: FILL IN
-- **protenix-finetuned-3000steps-nomsa-75crop.ipynb** - TODO: FILL IN
-- **protenix-finetuned-crop256-withmsa-1ksteps.ipynb** - TODO: FILL IN
+- **protenix-finetuned-7000steps-nomsa-75crop.ipynb** - code for our Protenix finetuning experiments without MSA
+- **protenix-finetuned-3000steps-nomsa-75crop.ipynb** - code for our Protenix finetuning experiments without MSA
+- **protenix-finetuned-crop256-withmsa-1ksteps.ipynb** - code for our Protenix finetuning experiments with added MSA as an input feature
 
 ### Instructions
 
-1.
+1. Install all dependencies listed in the **Pre-requisites** section
+
+2. Once those are installed, you will also need to install all the additional dependencies listed in this section using the provided links
+
+3. Once everything is installed, you will need to adjust some of the paths in the code to point to the correct directory, e.g., ```/kaggle/input/protenix-public/af3-dev``` will need to be adjusted to the location of the ```protenix-public``` folder on your device (once that dependency is installed). Additionally, you will also need to adjust the paths for the datasets to point to the ```Custom_datasets``` folder in this repository.
+
+4. After adjusting the paths, assuming everything is correctly installed, you can simply run the notebook as a Jupyter notebook.
 
 ## Analysis code
 
@@ -143,7 +171,9 @@ The Protenix notebooks require the following additional dependencies:
 
 ### Instructions
 
-1. 
+1. Install all dependencies listed in the **Pre-requisites** section
+
+2. 
 
 ## Ensembles
 
@@ -154,7 +184,9 @@ The Protenix notebooks require the following additional dependencies:
 
 ### Instructions
 
-1. 
+1. Install all dependencies listed in the **Pre-requisites** section
+
+2. 
 
 ## Meta-learner
 
@@ -164,4 +196,6 @@ The Protenix notebooks require the following additional dependencies:
 
 ### Instructions
 
-1. 
+1. Install all dependencies listed in the **Pre-requisites** section
+
+2. 
