@@ -15,7 +15,7 @@ The repository contains the following folders:
 - ```RibonanzaNet2```: this contains all the notebooks we used to test the RibonanzaNet2 model (https://www.kaggle.com/models/shujun717/ribonanzanet2)
 - ```Ensembles```: this contains all our code used for our experiments with different model ensemble strategies
 - ```Meta-learner```: this contains all our code used for our experiments with the meta learner
-- ```Data``: this contains our custom datasets that we created following the unforeseen permanent closing of submissions from the Kaggle competition (followin the May 29 deadline), as well as some of our experimental results on these custom datasets
+- ```Custom_datasets``: this contains our custom datasets that we created following the unforeseen permanent closing of submissions from the Kaggle competition (followin the May 29 deadline)
   
 
 ## Pre-requisites
@@ -39,8 +39,14 @@ pip install matplotlib
 pip install torch torchvision torchaudio
 pip install pyyaml
 pip install tqdm
-conda install -c bioconda usalign
 pip install optuna
+pip install scipy
+```
+
+5) Since all notebooks also use the USalign tool for scoring, you will additionally need to run the following command to install this locally (note: once this is installed locally, you will need to modify all the USalign directory paths in the code to point to where usalign is installed on your device, and will also need to comment out the code that copies USalign into the ```/kaggle/working``` directory):
+
+```sh
+conda install -c bioconda usalign
 ```
 
 ## Data
@@ -49,7 +55,7 @@ The data we used for our experiments was primarily provided by Kaggle (although 
 
 https://www.kaggle.com/competitions/stanford-rna-3d-folding/data
 
-The data on this link includes the training, validation and test datasets (although the hidden test dataset has not been made publicly available yet), as well as data for Multiple Sequence Alignment (MSA).
+The data on this link includes the training, validation and test datasets (although the hidden test dataset that was used for scoring for the competition leaderboard has not been made publicly available yet), as well as data for Multiple Sequence Alignment (MSA).
 
 ## Analysis code
 
