@@ -1,1 +1,2 @@
-# 3D_RNA_Folding
+# Stanford RNA 3D Folding
+
