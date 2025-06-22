@@ -8,14 +8,14 @@ Authors: Max Neuwinger, Sarah Verreault, Andreas Hiropedi
 
 The repository contains the following folders:
 
-- ```Analysis code```: this contains the notebooks we used to obtain insights about aspects of the data we were working with, as well as information about model confidence scores and model selection as a motivation for our meta learner
-- ```DRfold2```: this contains all the notebooks we used to test the DRfold2 model (https://github.com/leeyang/DRfold2)
-- ```Protenix```: this contains all the notebooks we used to test the Protenix model (https://github.com/bytedance/Protenix)
-- ```RhoFold+```: this contains all the notebooks we used to test the RhoFold+ model (https://github.com/ml4bio/RhoFold)
-- ```RibonanzaNet2```: this contains all the notebooks we used to test the RibonanzaNet2 model (https://www.kaggle.com/models/shujun717/ribonanzanet2)
-- ```Ensembles```: this contains all our code used for our experiments with different model ensemble strategies
-- ```Meta-learner```: this contains all our code used for our experiments with the meta learner
-- ```Custom_datasets``: this contains our custom datasets that we created following the unforeseen permanent closing of submissions from the Kaggle competition (followin the May 29 deadline)
+- ```Analysis code``` - this contains the notebooks we used to obtain insights about aspects of the data we were working with, as well as information about model confidence scores and model selection as a motivation for our meta learner
+- ```DRfold2``` - this contains all the notebooks we used to test the DRfold2 model (https://github.com/leeyang/DRfold2)
+- ```Protenix``` - this contains all the notebooks we used to test the Protenix model (https://github.com/bytedance/Protenix)
+- ```RhoFold+``` - this contains all the notebooks we used to test the RhoFold+ model (https://github.com/ml4bio/RhoFold)
+- ```RibonanzaNet2``` - this contains all the notebooks we used to test the RibonanzaNet2 model (https://www.kaggle.com/models/shujun717/ribonanzanet2)
+- ```Ensembles``` - this contains all our code used for our experiments with different model ensemble strategies
+- ```Meta-learner``` - this contains all our code used for our experiments with the meta learner
+- ```Custom_datasets``` - this contains our custom datasets that we created following the unforeseen permanent closing of submissions from the Kaggle competition (followin the May 29 deadline)
   
 
 ## Pre-requisites
@@ -59,28 +59,68 @@ The data on this link includes the training, validation and test datasets (altho
 
 ## Analysis code
 
+**Notebooks:**
 
+- dataframe-comparing-predictions-confidences.ipynb - 
 
 ## RhoFold+
 
+**Additional dependencies:**
 
+**Notebooks:**
+
+- rhofold+.ipynb - 
 
 ## RibonanzaNet2
 
+**Additional dependencies:**
 
+**Notebooks:**
+
+- ribonanzanet2-ddpm-inference.ipynb - 
+- ribonanzanet2-ddpm-inference-with-msa.ipynb - 
+- ribonanzanet2-ddpm-inference-with-confidence.ipynb - 
 
 ## DRfold2
 
+**Additional dependencies:**
 
+**Notebooks:**
+
+- drfold2-no-msa.ipynb - 
+- drfold2-add-msa.ipynb - 
+- drfold2-with-confidence.ipynb - 
 
 ## Protenix
 
+**Additional dependencies:**
 
+**Notebooks:**
+
+- protenix-baseline.ipynb - 
+- protenix-baseline-withmsa.ipynb - 
+- protenix-baseline-with-confidence.ipynb - 
+- protenix-finetuned-7000steps-nomsa-75crop.ipynb - TODO: FILL IN
+- protenix-finetuned-3000steps-nomsa-75crop.ipynb - TODO: FILL IN
+- protenix-finetuned-crop256-withmsa-1ksteps.ipynb - TODO: FILL IN
 
 ## Ensembles
+
+**Notebooks:**
+
+- validationpredictions.ipynb - 
+- ensembles-scoring.ipynb - 
+
+**Instructions:**
 
 
 
 ## Meta-learner
+
+**Notebooks:**
+
+- 
+
+**Instructions:**
 
 
