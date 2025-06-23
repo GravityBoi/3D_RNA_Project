@@ -1,0 +1,4 @@
+# ninja log v5
+0	10524	1746971036261423187	layer_norm_cuda.o	65ce2dcf1ac0c124
+0	49179	1746971074901502878	layer_norm_cuda_kernel.cuda.o	7523a811fba2939d
+49182	49345	1746971075080507840	fastfold_layer_norm_cuda.so	e012db447b2a3ff

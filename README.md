@@ -8,14 +8,19 @@ Authors: Max Neuwinger, Sarah Verreault, Andreas Hiropedi
 
 The repository contains the following folders:
 
-- ```Analysis_code``` - this contains the notebooks we used to obtain insights about aspects of the data we were working with, as well as information about model confidence scores and model selection as a motivation for our meta learner
-- ```DRfold2``` - this contains all the notebooks we used to test the DRfold2 model (https://github.com/leeyang/DRfold2)
-- ```Protenix``` - this contains all the notebooks we used to test the Protenix model (https://github.com/bytedance/Protenix)
-- ```RhoFold+``` - this contains all the notebooks we used to test the RhoFold+ model (https://github.com/ml4bio/RhoFold)
-- ```RibonanzaNet2``` - this contains all the notebooks we used to test the RibonanzaNet2 model (https://www.kaggle.com/models/shujun717/ribonanzanet2)
-- ```Ensembles``` - this contains all our code used for our experiments with different model ensemble strategies
-- ```Meta_learner``` - this contains all our code used for our experiments with the meta learner
-- ```Custom_datasets``` - this contains our custom datasets that we created following the unforeseen permanent closing of submissions from the Kaggle competition (followin the May 29 deadline)
+- ```Data_Analysis_code``` - this contains the notebooks we used to obtain insights about aspects of the data we were working with, as well as information about model confidence scores and model selection as a motivation for our meta learner
+- ```ModelNotebooks/DRfold2``` - this contains all the notebooks we used to test the DRfold2 model (https://github.com/leeyang/DRfold2)
+- ```ModelNotebooks/Protenix``` - this contains all the notebooks we used to test the Protenix model (https://github.com/bytedance/Protenix)
+- ```ModelNotebooks/RhoFold+``` - this contains all the notebooks we used to test the RhoFold+ model (https://github.com/ml4bio/RhoFold)
+- ```ModelNotebooks/RibonanzaNet2``` - this contains all the notebooks we used to test the RibonanzaNet2 model (https://www.kaggle.com/models/shujun717/ribonanzanet2)
+- ```SimpleEnsembles``` - this contains all our code used for our experiments with the different simple/heuristic model ensemble strategies
+- ```Datasets``` - contains the csvs of the Kaggle data and our own custom versions with temporal splits and quality filtering
+- ```Datasets_Scripts``` - contains the python scripts that we used to create our custom dataset splits and prepare the Kaggle MSA data for the Protenix format
+- ```Helper_Scripts``` - contains small helper scripts responsible for evalauting multiple submissions and creating the finetuning plots from the raw Training Output
+- ```MetaModel``` - this contains all our code used for our experiments with the meta model
+- ```PredictionData_ForMetaModel``` - contains the predicitons of our different models used for the training and testing of the Meta Model
+- ```Protenix_Finetuned_CustomTestSet_Results``` - contains the results of the different Protenix finetuned weights for our custom test set
+- ```Protenix_Finetuning_WholeCode``` - contains the whole code we used to finetune and test Protenix
   
 
 ## Pre-requisites
@@ -51,11 +56,129 @@ conda install -c bioconda usalign
 
 ## Data
 
-The data we used for our experiments was primarily provided by Kaggle (although we also created our custom datasets, which are stored under ```Data/Custom_datasets``) and can be access using the following link:
+The data we used for our experiments was primarily provided by Kaggle (although we also created our custom datasets) and can be access using the following link:
 
 https://www.kaggle.com/competitions/stanford-rna-3d-folding/data
 
 The data on this link includes the training, validation and test datasets (although the hidden test dataset that was used for scoring for the competition leaderboard has not been made publicly available yet), as well as data for Multiple Sequence Alignment (MSA).
+
+## Reproducing ProteinX Fine-Tuning Results
+
+This section outlines the steps required to set up the environment and reproduce our ProteinX fine-tuning experiments.
+
+### 1. Environment Setup
+
+To set up the environment, please follow these steps:
+
+1.  Install the required dependencies using the provided `setup.py` script. It is recommended to do this in an "editable" mode.
+    ```bash
+    pip install -e .
+    ```
+2.  Install the `pandas` library.
+    ```bash
+    conda install pandas
+    ```
+
+### 2. Summary of Code Modifications
+
+We made several key modifications to the original ProteinX codebase to support our experiments. The main changes are located in the following files:
+
+*   `configs/configs_data.py`: We added our custom `kaggle_rna3d` dataset configuration, which specifies paths to the competition data and parameters for our data loader.
+*   `protenix/data/kaggle_rna_dataset.py`: This is a new file containing our custom `Dataset` class. It handles loading the Kaggle RNA data, performing data integrity checks, and interfacing with the MSA pipeline.
+*   `protenix/data/msa_featurizer.py`: We adapted this file to include custom RNA MSA featurization logic, allowing the model to process the provided RNA alignments.
+*   `protenix/data/json_to_feature.py`: This file was slightly edited to ensure the atom permutation list was compatible with the RNA data and competition input format.
+*   `runner/train.py`: The training script was directly modified to use our custom `KaggleRNADataset` class as the data loader for the fine-tuning process.
+
+### 3. Fine-Tuning
+
+The fine-tuning experiments can be launched via a bash script, following the standard procedure outlined in the official ProteinX documentation.
+
+1.  **Download Pretrained Weights:** Start from the official `model_v0.2.0.pt` pretrained weights provided by the Protenix authors.
+
+2.  **Run Training Script:** Use a command similar to the one below, ensuring you point to the pretrained weights and specify our `kaggle_rna3d` dataset.
+
+    ```bash
+    torchrun --nproc_per_node=<num_gpus> runner/train.py \
+        --run_name <your_run_name> \
+        --base_dir /path/to/save/runs \
+        --load_checkpoint_path /path/to/model_v0.2.0.pt \
+        --data.train_sets kaggle_rna3d \
+        --data.test_sets kaggle_rna3d \
+        # ... other custom hyperparameters as specified in our report ...
+    ```
+
+    **Note on Ablation Study:** To run the ablation experiment (fine-tuning *without* MSAs), simply set the `enable_rna_msa` flag in the `configs/configs_data.py` file to `False` before launching the training script.
+
+### 4. Inference
+
+Once you have fine-tuned model checkpoints, you can use the provided notebooks to generate predictions:
+
+*   `kaggle_comp_inference.ipynb`: Use this notebook to generate predictions with a model that was fine-tuned **without** MSA data.
+*   `kaggle_comp_inference_MSA.ipynb`: Use this notebook to generate predictions with a model that was fine-tuned **with** MSA data.
+
+These notebooks are configured to generate submission files for the Kaggle platform and can also be used to evaluate the models locally on our custom test set.
+
+## Reproducing Meta-Model Ensemble Results
+
+This section outlines the steps to train our meta-learning model and use it to generate an ensembled submission file. The process involves generating a feature set from the predictions of multiple base models, training a neural network to predict structure quality, and then using this network to select the best candidates for the final submission.
+
+### 1. Dependencies
+
+Ensure you have the following core Python libraries installed. You can install them using `pip` or `conda`.
+
+```
+pandas
+numpy
+scikit-learn
+torch
+joblib
+tqdm
+matplotlib
+seaborn
+lightgbm  # For the LightGBM version of the notebook
+```
+
+### 2. Workflow Overview
+
+The process is divided into two main stages, each handled by a dedicated Jupyter notebook:
+
+1.  **Training the Meta-Model:** Using predictions on the *training set* to train the quality assessment model.
+2.  **Inference:** Using the trained model to score predictions on the *test set* and create a final submission file.
+
+### 3. Step-by-Step Instructions
+
+#### Step 1: Prepare the Input Data
+
+Before running the notebooks, you must first generate and organize the predictions from the three base models: **ProteinX**, **DrFold2**, and **RibonanzaNet2**.
+
+1.  Run each base model on the **training sequences** to generate their respective `submission.csv`, `confidence.csv`, and (if applicable) `ranking_scores.csv` files.
+2.  Run each base model on the **test sequences** (our custom 94-sample set) to generate a separate set of prediction files.
+3.  Place all these prediction files in organized directories.
+4.  Update the file paths in the configuration cells at the top of both notebooks to point to your data files.
+
+#### Step 2: Train the Meta-Model
+
+Run the `01_Meta_Learner_Training.ipynb` notebook. This notebook will:
+
+1.  Load the predictions and ground truth labels for the **training set**.
+2.  Perform extensive **feature engineering**, calculating 28 distinct features (including biophysical energies, structural properties, and ensemble consensus metrics) for every candidate structure.
+3.  Train the neural network-based meta-model.
+4.  Save the two essential outputs:
+    *   `meta_learner_model.pth`: The trained PyTorch model weights.
+    *   `meta_learner_scaler.pkl`: The `StandardScaler` object fitted on the training data.
+
+#### Step 3: Generate the Final Ensemble Submission
+
+Run the `02_Meta_Learner_Inference.ipynb` notebook. This notebook will:
+
+1.  Load the predictions for the **test set**.
+2.  Perform the same feature engineering steps as the training notebook.
+3.  Load the `meta_learner_model.pth` and `meta_learner_scaler.pkl` files from Step 2.
+4.  Use the trained model to predict a TM-score for every candidate structure in the test set.
+5.  Select the top 5 candidates with the highest predicted scores for each target RNA.
+6.  Assemble the coordinate data from these selected candidates into a final `ensembled_submission.csv` file.
+
+This `ensembled_submission.csv` is the final output of our meta-learning ensemble approach. An additional notebook is also provided, which follows a similar workflow but uses a LightGBM model instead of a neural network.
 
 ## RhoFold+
 
@@ -183,7 +306,7 @@ The Protenix notebooks require the following additional dependencies:
 
 Note that, after running these notebooks, you will also need to adjust the paths that point to the CSV files for the predictions (e.g., ```/kaggle/input/predictions/drfold2_submission_with_confidence.csv``` will need to be modified to your local directory where this file is stored).
 
-## Ensembles
+## Simple Ensembles
 
 ### Notebooks
 
@@ -209,15 +332,3 @@ Note that, after running these notebooks, you will also need to adjust the paths
 5. After running this notebook, you will need to again save the outputs as CSV files and adjust the paths in the ```ensembles-scoring.ipynb``` notebook before running the code. (e.g., ```/kaggle/input/naive-set/naive.csv``` will need to be modified to your local directory where this file is stored). 
 
 6. Following this second directory path adjustment, you can safely execute the code in the ```ensembles-scoring.ipynb``` notebook to obtain TM-score values for all the ensemble strategies.
-
-## Meta-learner
-
-### Notebooks
-
-- 
-
-### Instructions
-
-1. Install all dependencies listed in the **Pre-requisites** section
-
-2. 
