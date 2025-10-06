@@ -2,6 +2,8 @@
 
 This repository contains our work as part of the Stanford RNA 3D Folding Kaggle competition.
 
+**Everything is detailed in the final report pdf!**
+
 Authors: Max Neuwinger, Sarah Verreault, Andreas Hiropedi
 
 ## Folder structure
